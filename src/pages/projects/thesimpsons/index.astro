@@ -29,9 +29,11 @@ const characters = data_character.results;
           <img
             src={`https://cdn.thesimpsonsapi.com/200${character.portrait_path}`}
             alt={character.name}
-            transition:name={`character-${character.id}`}
+            transition:name={`img-${character.id}`}
           />
-          <h4 title={character.name}>{character.name}</h4>
+          <h4 title={character.name} transition:name={`name-${character.id}`}>
+            {character.name}
+          </h4>
         </a>
       ))
     }

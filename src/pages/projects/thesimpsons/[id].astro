@@ -24,12 +24,12 @@ const title = `${character.name} | The Simpsons`;
       <img
         src={`https://cdn.thesimpsonsapi.com/500${character.portrait_path}`}
         alt={character.name}
-        transition:name={`character-${id}`}
+        transition:name={`img-${id}`}
       />
 
       <!-- Información principal -->
       <div class="info-container flex-column">
-        <h1>{character.name}</h1>
+        <h1 transition:name={`name-${id}`}>{character.name}</h1>
 
         <div class="basic-info flex-row">
           {
@@ -161,7 +161,7 @@ const title = `${character.name} | The Simpsons`;
     color: var(--clr-text);
     padding: 10px 18px;
     background-color: #f8db27;
-    border-radius: 50px;
+    border-radius: clamp(17px, 1.2vw, 50px);
     width: auto;
     text-align: center;
   }
@@ -197,8 +197,8 @@ const title = `${character.name} | The Simpsons`;
 
   .phrases-section li {
     background-color: #fff;
-    padding: 12px 22px;
-    border-radius: 50px;
+    padding: 10px 22px;
+    border-radius: clamp(17px, 1.2vw, 50px);
     color: var(--clr-text);
     font-style: italic;
     font-size: 0.95rem;
