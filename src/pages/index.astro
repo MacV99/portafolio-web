@@ -1,11 +1,17 @@
 ---
 import Layout1 from "../layouts/Layout1.astro";
-
 import Hero from "../sections/hero.astro";
+import Projects from "../sections/projects.astro";
 ---
 
-<Layout1 title="Home">
-	<Hero />
+<Layout1 title="Home | MacV">
+	<Hero
+		title="MacV"
+		span="Miguel Angel Cuellar Velandia"
+		bg_image="/img/wallpaper1.jpg"
+	/>
+
+	<Projects />
 </Layout1>
 
 <style>

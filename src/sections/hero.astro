@@ -1,5 +1,11 @@
-<section class="flex-column">
-  <h1>MIGUEL CUELLAR</h1>
+---
+const { title, span, bg_image } = Astro.props;
+---
+
+<section class="flex-column" style={`--bg-image: url('${bg_image || ""}')`}>
+  <h1>{title}</h1>
+  {span && <span>{span}</span>}
+  <slot />
   <!-- <div class="buttons flex-row">
     <a
       class="boton"
@@ -17,12 +23,12 @@
 <style>
   section {
     text-align: center;
-    background-image: url("/img/bg-hero.jpg");
-    background-attachment: fixed;
+    background-image: var(--bg-image);
+    background-color: #121617c2;
+    background-blend-mode: darken;
+    background-attachment: local;
     background-repeat: no-repeat;
     background-position: center center;
-    background-color: #121617e5;
-    background-blend-mode: darken;
     background-size: cover;
     height: 300px;
     gap: 5px;
@@ -46,9 +52,20 @@
     line-height: normal;
   }
 
+  span {
+    color: #fff;
+    font-size: 0.54rem;
+    margin-top: -12px;
+  }
+
   @media (min-width: 750px) {
     h1 {
       font-size: 4rem;
+    }
+
+    span {
+      font-size: 0.7rem;
+      margin-top: -15px;
     }
   }
 </style>

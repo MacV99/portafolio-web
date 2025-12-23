@@ -1,0 +1,104 @@
+---
+// Lista de proyectos - solo editas aquí para agregar más
+const proyectos = [
+  {
+    id: 1,
+    nombre: "Staurant",
+    descripcion: "Mi sitio web personal con todos mis proyectos",
+    url: "https://miportfolio.com",
+  },
+  {
+    id: 2,
+    nombre: "Farra Calculator",
+    descripcion: "Tienda online con carrito de compras",
+    url: "https://mitienda.com",
+  },
+  {
+    id: 3,
+    nombre: "The Simpsons",
+    descripcion: "The Simpsons",
+    url: "/projects/thesimpsons/",
+  },
+];
+---
+
+<section class="proyectos">
+  <h2>Mis Proyectos</h2>
+  <div class="proyectos-grid">
+    {
+      proyectos.map((proyecto) => (
+        <article class="proyecto-card flex-column">
+          <h3>{proyecto.nombre}</h3>
+          <p>{proyecto.descripcion}</p>
+
+          <a
+            href={proyecto.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="boton"
+          >
+            Ver Proyecto
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .proyectos {
+    background-color: var(--clr-white);
+  }
+
+  .proyectos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .proyectos-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .proyecto-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    border: solid 1px var(--clr-border);
+    transition: var(--transition);
+    align-items: start;
+    gap: 7px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .proyecto-card h3 {
+    font-size: 1.3rem;
+    color: var(--clr-dark);
+  }
+
+  .proyecto-card .boton {
+    margin-top: 12px;
+  }
+
+  @media (hover: hover) {
+    .proyecto-card:hover {
+    }
+  }
+
+  /* DESKTOP - A partir de 750px */
+  @media (min-width: 750px) {
+    .proyectos-grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .proyecto-card {
+      max-width: 350px;
+    }
+  }
+</style>
