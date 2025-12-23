@@ -29,6 +29,7 @@ const characters = data_character.results;
           <img
             src={`https://cdn.thesimpsonsapi.com/200${character.portrait_path}`}
             alt={character.name}
+            transition:name={`character-${character.id}`}
           />
           <h4 title={character.name}>{character.name}</h4>
         </a>
@@ -39,7 +40,7 @@ const characters = data_character.results;
 
 <style>
   body {
-    background-color: #eaf0fb;
+    background-color: #d5e0f7;
   }
   .grid {
     flex-wrap: wrap;
@@ -52,7 +53,6 @@ const characters = data_character.results;
     align-items: start;
     justify-content: start;
     text-align: left;
-    /* background-color: #fff; */
     border: solid 1px transparent;
     padding: 10px 15px;
     border-radius: 7px;
@@ -90,8 +90,8 @@ const characters = data_character.results;
 
   @media (hover: hover) {
     .character-card:hover {
-      background-color: #f8db27;
-      border: solid 1px #dfc523;
+      background-color: #fff;
+      border: solid 1px var(--clr-border);
       scale: 1.02;
       cursor: pointer;
     }
