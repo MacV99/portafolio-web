@@ -1,7 +1,6 @@
-// @ts-check
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  // Vacío o con tus otras configs
 });
