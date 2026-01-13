@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --clr-main: #3e484d;
@@ -7,13 +7,19 @@
   --clr-dark2: #181d1f;
 
   --clr-gray: #646464;
-  --clr-text: #646464;
+  --clr-text: #d0d0d0;
   --clr-border: #d8dbdc;
 
   --clr-white: #ebeded;
 
   --transition: 0.11s ease;
-  --font1: "Cascadia Code", sans-serif;
+  --font1: "Montserrat", sans-serif;
+
+  --clr-text: #ededed;
+  --clr-background: #000000;
+  --clr-primary: #c09be3;
+  --clr-second: #572188;
+  --clr-accent: #9951db;
 }
 
 
@@ -27,7 +33,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
-  font-family: monospace, sans-serif;
+  font-family: var(--font1);
 }
 
 body {
@@ -36,7 +42,8 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: var(--clr-dark);
+  color: #fff;
+  background-color: #000;
 
 }
 
@@ -64,7 +71,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 2px;
   padding-left: 2px;
 
@@ -72,6 +79,10 @@ h5 {
 
 p {
   color: var(--clr-text);
+}
+
+section>h2 {
+  text-transform: uppercase;
 }
 
 /* FLEX ROW Y FLEX COLUMN */
@@ -102,7 +113,7 @@ footer {
 
 section>*,
 footer>* {
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 button,
@@ -115,9 +126,10 @@ button,
   letter-spacing: 2px;
   padding-left: 16px;
   text-transform: uppercase;
-  border: solid 2px #fff;
-  background-color: #fff;
+  /* border: solid 2px #fff; */
+  background-color: var(--clr-primary);
   color: var(--clr-dark);
+  transition: var(--transition);
 }
 
 .boton2 {
@@ -132,7 +144,7 @@ input {
   border-radius: 50px;
   border: solid 1px transparent;
   font-size: 1rem;
-  font-family: monospace;
+  font-family: var(--font1);
   background-color: #fff;
   transition: var(--transition);
   outline: none;
@@ -147,7 +159,7 @@ input:focus {
 
   button:hover,
   .boton:hover {
-    background-color: var(--clr-white);
+    transform: translate(0, -1.5px)
   }
 
   .boton2:hover {

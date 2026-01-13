@@ -3,18 +3,34 @@
 const proyectos = [
   {
     id: 1,
-    nombre: "Staurant",
-    descripcion: "Mi sitio web personal con todos mis proyectos",
+    nombre: "STAURANT",
+    descripcion:
+      "A gastronomic social platform designed for granular dish-by-dish rating and personalized culinary recommendations.",
     url: "https://miportfolio.com",
   },
   {
     id: 2,
-    nombre: "Farra Calculator",
-    descripcion: "Tienda online con carrito de compras",
+    nombre: "CERTIYÁ",
+    descripcion:
+      "An automated digital certification system that eliminates manual processing through instant web-based generation.",
     url: "https://mitienda.com",
   },
   {
     id: 3,
+    nombre: "Maintenance Reporting System",
+    descripcion:
+      "A technical documentation tool designed to automate service reports and track equipment maintenance history.",
+    url: "/projects/thesimpsons/",
+  },
+  {
+    id: 4,
+    nombre: "Customer Management System",
+    descripcion:
+      "A self-service customer portal focused on reducing response times through automated information access.",
+    url: "/projects/thesimpsons/",
+  },
+  {
+    id: 5,
     nombre: "The Simpsons",
     descripcion: "The Simpsons",
     url: "/projects/thesimpsons/",
@@ -23,11 +39,11 @@ const proyectos = [
 ---
 
 <section class="proyectos">
-  <h2>Mis Proyectos</h2>
-  <div class="proyectos-grid">
+  <h2>Projects</h2>
+  <div class="grid">
     {
       proyectos.map((proyecto) => (
-        <article class="proyecto-card flex-column">
+        <article class="card flex-column">
           <h3>{proyecto.nombre}</h3>
           <p>{proyecto.descripcion}</p>
 
@@ -46,60 +62,68 @@ const proyectos = [
 </section>
 
 <style>
-  .proyectos {
-    background-color: var(--clr-white);
-  }
-
-  .proyectos h2 {
+  h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--clr-primary);
   }
 
-  .proyectos-grid {
+  .grid {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    align-items: stretch;
   }
 
-  .proyecto-card {
-    background-color: #fff;
-    border-radius: 12px;
+  .card {
+    background-color: #ffffff12;
+    border-radius: 25px;
     padding: 20px;
-    border: solid 1px var(--clr-border);
+    /* border: solid 1px var(--clr-border); */
     transition: var(--transition);
     align-items: start;
-    gap: 7px;
+    gap: 2px;
     width: 100%;
     max-width: 100%;
   }
 
-  .proyecto-card h3 {
+  .card h3 {
     font-size: 1.3rem;
-    color: var(--clr-dark);
   }
 
-  .proyecto-card .boton {
-    margin-top: 12px;
-    border: solid 1px var(--clr-border);
+  .card p {
+    margin-bottom: 12px;
+  }
+
+  .card .boton {
+    margin-top: auto;
+    /* border: solid 1px var(--clr-border); */
   }
 
   @media (hover: hover) {
-    .proyecto-card:hover {
+    .card:hover {
+      border-radius: 10px;
+      background-color: #ffffff10;
     }
   }
 
   /* DESKTOP - A partir de 750px */
   @media (min-width: 750px) {
-    .proyectos-grid {
+    .grid {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
     }
 
-    .proyecto-card {
+    .card {
       max-width: 350px;
+    }
+
+    h2 {
+      font-size: 3rem;
     }
   }
 </style>

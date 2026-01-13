@@ -1,0 +1,100 @@
+---
+const education = [
+  {
+    institution: "UNIVERSIDAD SURCOLOMBIANA",
+    degree: "Software Engineer",
+    date: "2019 - 2024",
+  },
+  {
+    institution: "FreeCodeCamp",
+    degree: "RESPONSIVE WEB DESINGN",
+    date: "June 2023",
+  },
+  {
+    institution: "Matlab Onramp",
+    degree: "MATLAB",
+    date: "July 2021",
+  },
+];
+---
+
+<section id="education">
+  <h2>EDUCATION</h2>
+  <div class="grid">
+    {
+      education.map((element) => (
+        <article class="card flex-column">
+          <h3>{element.institution}</h3>
+          <p>{element.degree}</p>
+          <p>{element.date}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--clr-primary);
+  }
+
+  .grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .card {
+    background-color: #ffffff12;
+    border-radius: 25px;
+    padding: 20px;
+    /* border: solid 1px var(--clr-border); */
+    transition: var(--transition);
+    align-items: start;
+    gap: 2px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .card h3 {
+    font-size: 1.3rem;
+  }
+
+  .card p {
+    margin-bottom: 12px;
+  }
+
+  .card .boton {
+    margin-top: auto;
+    /* border: solid 1px var(--clr-border); */
+  }
+
+  @media (hover: hover) {
+    .card:hover {
+      border-radius: 10px;
+    }
+  }
+
+  /* DESKTOP - A partir de 750px */
+  @media (min-width: 750px) {
+    .grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      max-width: 350px;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+  }
+</style>

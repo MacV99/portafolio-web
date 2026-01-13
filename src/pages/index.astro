@@ -2,6 +2,8 @@
 import Layout1 from "../layouts/Layout1.astro";
 import Hero from "../sections/hero.astro";
 import Projects from "../sections/projects.astro";
+import Education from "../sections/education.astro";
+import Experience from "../sections/experience.astro";
 ---
 
 <Layout1 title="Home | MacV">
@@ -10,6 +12,22 @@ import Projects from "../sections/projects.astro";
 		span="Miguel Angel Cuellar Velandia"
 		bg_image="/img/wallpaper1.jpg"
 	/>
+
+	<section id="summary">
+		<h2>Professional Summary</h2>
+		<p>
+			Software Engineer graduate from Universidad Surcolombiana with solid
+			knowledge in Astro, Python, JavaScript, HTML, and CSS. Problem-solving
+			oriented with a strong commitment to continuous learning and staying
+			current with new technologies. Highly adaptable team player skilled in
+			agile environments, focused on delivering efficient solutions on time and
+			dedicated to constant professional growth within the technology sector.
+		</p>
+	</section>
+
+	<Education />
+
+	<Experience />
 
 	<Projects />
 </Layout1>
