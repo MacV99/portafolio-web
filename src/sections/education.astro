@@ -25,8 +25,8 @@ const education = [
       education.map((element) => (
         <article class="card flex-column">
           <h3>{element.institution}</h3>
-          <p>{element.degree}</p>
-          <p>{element.date}</p>
+          <p class="degree">{element.degree}</p>
+          <p class="date">{element.date}</p>
         </article>
       ))
     }
@@ -64,15 +64,21 @@ const education = [
 
   .card h3 {
     font-size: 1.3rem;
+    padding-left: 0;
   }
 
-  .card p {
+  .card p.degree {
     margin-bottom: 12px;
   }
 
   .card .boton {
     margin-top: auto;
     /* border: solid 1px var(--clr-border); */
+  }
+
+  .card .date {
+    margin-top: auto;
+    margin-bottom: 0px;
   }
 
   @media (hover: hover) {

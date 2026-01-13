@@ -155,6 +155,10 @@ input:focus {
   border-color: var(--clr-border);
 }
 
+span {
+  color: var(--clr-accent);
+}
+
 @media (hover: hover) {
 
   button:hover,

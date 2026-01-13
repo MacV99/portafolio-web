@@ -3,12 +3,37 @@ const experience = [
   {
     company: "Boliglobos Latino",
     position: "Frontend Developer",
-    summary: "resumen",
+    summary:
+      "Technology solutions lead in charge of digital architecture and process automation to optimize company operations and sales.",
+    highlights: [
+      "Designed and developed the corporate website and E-commerce platform, centralizing the brand's digital presence",
+      "Implemented and managed the E-learning platform using Odoo, streamlining digital training and content access",
+      "Developed a custom digital certificate system integrated into the website, automating document generation and delivery",
+      "Led the implementation of Escala (CRM) for communication workflows and WhatsApp automation, improving customer service efficiency",
+      "Integrated the Odoo ecosystem to provide unified management for sales, learning, and web administration",
+    ],
   },
   {
     company: "Alcaldía de Neiva",
-    position: "Frontend Developer",
-    summary: "resumen",
+    position: "Webmaster",
+    summary:
+      "Progressed from Intern to full-time Software Engineer within the Webmaster department, leading the modernization of institutional portals and user interface optimization.",
+    highlights: [
+      "Led the modernization of the CSS architecture for the Secretary's web portals, enhancing User Experience (UX) and mobile responsiveness.",
+      "Managed the maintenance and updates of critical content on the institutional website following Digital Government standards.",
+    ],
+  },
+  {
+    company: " KODLAND",
+    position: "Programming Instructor (LUA / Roblox Studio)",
+    summary:
+      "Technical instructor responsible for teaching programming fundamentals and game development to children, fostering logical thinking and technical creativity.",
+    highlights: [
+      " Delivered interactive programming lessons using LUA and Roblox Studio, simplifying complex coding concepts for students aged 8 to 12.",
+      "signed and supervised game development projects, guiding students through script implementation, mechanics, and environment design",
+      " Promoted the development of problem-solving skills and algorithmic logic using project-based learning methodologies",
+      "Managed student groups in a virtual environment, ensuring pedagogical goals were met while maintaining high engagement levels",
+    ],
   },
 ];
 ---
@@ -18,10 +43,18 @@ const experience = [
   <div class="grid">
     {
       experience.map((element) => (
-        <article>
+        <article class="card">
           <h3>{element.company}</h3>
-          <p>{element.position}</p>
+          <p class="position">{element.position}</p>
           <p>{element.summary}</p>
+          <br />
+
+          <ul class="highlights flex-row">
+            {element.highlights.map((highlight) => (
+              <li class="highlight">{highlight}</li>
+              <br />
+            ))}
+          </ul>
         </article>
       ))
     }
@@ -49,7 +82,6 @@ const experience = [
     background-color: #ffffff12;
     border-radius: 25px;
     padding: 20px;
-    /* border: solid 1px var(--clr-border); */
     transition: var(--transition);
     align-items: start;
     gap: 2px;
@@ -59,9 +91,10 @@ const experience = [
 
   .card h3 {
     font-size: 1.3rem;
+    padding-left: 0;
   }
 
-  .card p {
+  .card p.position {
     margin-bottom: 12px;
   }
 
@@ -70,10 +103,22 @@ const experience = [
     /* border: solid 1px var(--clr-border); */
   }
 
+  .highlights{
+    gap: 10px; 
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .highlight{
+    padding: 10px 15px;
+    width: fit-content;
+    max-width: 300px;
+    border-radius: 15px;
+    background-color: var(--clr-background);
+  }
+
   @media (hover: hover) {
-    .card:hover {
-      border-radius: 10px;
-    }
   }
 
   /* DESKTOP - A partir de 750px */
@@ -85,7 +130,7 @@ const experience = [
     }
 
     .card {
-      max-width: 350px;
+      /* max-width: 900px; */
     }
 
     h2 {
