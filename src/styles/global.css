@@ -43,7 +43,13 @@ body {
   align-items: center;
   flex-direction: column;
   color: #fff;
-  background-color: #000;
+  background-image: url('/img/wallpaper.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: #000000a7;
+  background-blend-mode: darken;
+
 
 }
 
@@ -83,6 +89,7 @@ p {
 
 section>h2 {
   text-transform: uppercase;
+  font-size: 3rem;
 }
 
 /* FLEX ROW Y FLEX COLUMN */
@@ -104,7 +111,7 @@ section>h2 {
 section,
 footer {
   padding: 40px 20px;
-  gap: 18px;
+  gap: 0px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -113,29 +120,29 @@ footer {
 
 section>*,
 footer>* {
-  max-width: 1200px;
+  max-width: 1100px;
 }
 
 button,
 .boton,
 .boton2 {
-  padding: 11px 14px 10px 14px;
+  padding: 14px 25px;
   border-radius: 50px;
   font-size: .9rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  padding-left: 16px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-indent: 4px;
   text-transform: uppercase;
-  /* border: solid 2px #fff; */
-  background-color: var(--clr-primary);
-  color: var(--clr-dark);
+  background-color: #ffffff0e;
+  backdrop-filter: blur(7px);
+  color: var(--clr-white);
   transition: var(--transition);
+  border: solid 1px #ffffff15;
 }
 
 .boton2 {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border: solid 1px #ffffff15;
 }
 
 input {
@@ -162,8 +169,9 @@ span {
 @media (hover: hover) {
 
   button:hover,
-  .boton:hover {
-    transform: translate(0, -1.5px)
+  .boton:hover,
+  .boton2:hover {
+    transform: translate(0, -1px)
   }
 
   .boton2:hover {
