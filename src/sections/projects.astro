@@ -80,10 +80,10 @@ const proyectos = [
   }
 
   .card {
-    background-color: #ffffff04;
-    border: solid 1px #ffffff13;
-    backdrop-filter: blur(7px);
-    border-radius: 25px;
+    background-color: var(--clr-glass-bg);
+    border: solid 1px var(--clr-glass-border);
+    backdrop-filter: var(--blur-md);
+    border-radius: var(--radius-default);
     padding: 20px;
     transition: var(--transition);
     align-items: start;
@@ -108,8 +108,8 @@ const proyectos = [
 
   @media (hover: hover) {
     .card:hover {
-      border-radius: 10px;
-      background-color: #ffffff10;
+      border-radius: var(--radius-interactive);
+      background-color: var(--clr-glass-bg-hover);
     }
   }
 

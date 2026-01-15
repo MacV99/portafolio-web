@@ -4,16 +4,19 @@ const education = [
     institution: "UNIVERSIDAD SURCOLOMBIANA",
     degree: "Software Engineer",
     date: "2019 - 2024",
+    href: "/docs/DIPLOMA ING SOFTWARE.pdf",
   },
   {
     institution: "FreeCodeCamp",
     degree: "RESPONSIVE WEB DESINGN",
     date: "June 2023",
+    href: "/docs/Certificado-responsive-web-design.pdf",
   },
   {
     institution: "Matlab Onramp",
     degree: "MATLAB",
     date: "July 2021",
+    href: "/docs/mathlab_certificate.pdf",
   },
 ];
 ---
@@ -23,11 +26,17 @@ const education = [
   <div class="grid">
     {
       education.map((element) => (
-        <article class="card flex-column">
+        <a
+          href={element.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card flex-column"
+        >
           <h3>{element.institution}</h3>
           <p class="degree">{element.degree}</p>
           <p class="date">{element.date}</p>
-        </article>
+          <i class="bi bi-box-arrow-up-right icon" />
+        </a>
       ))
     }
   </div>
@@ -50,16 +59,19 @@ const education = [
   }
 
   .card {
-    background-color: #ffffff04;
-    border: solid 1px #ffffff13;
-    backdrop-filter: blur(7px);
-    border-radius: 25px;
+    background-color: var(--clr-glass-bg);
+    border: solid 1px var(--clr-glass-border);
+    backdrop-filter: var(--blur-md);
+    border-radius: var(--radius-default);
     padding: 20px;
     transition: var(--transition);
     align-items: start;
     gap: 2px;
     width: 100%;
     max-width: 100%;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
   }
 
   .card h3 {
@@ -71,20 +83,30 @@ const education = [
     margin-bottom: 12px;
   }
 
-  .card .boton {
-    margin-top: auto;
-    /* border: solid 1px var(--clr-border); */
-  }
-
   .card .date {
     margin-top: auto;
     margin-bottom: 0px;
   }
 
+  .card .icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+    opacity: 0.5;
+    transition: var(--transition);
+  }
+
   @media (hover: hover) {
     .card:hover {
-      border-radius: 10px;
-      background-color: #ffffff10;
+      border-radius: var(--radius-interactive);
+      background-color: var(--clr-glass-bg-hover);
+      border-color: var(--clr-glass-border-hover);
+    }
+
+    .card:hover .icon {
+      opacity: 1;
+      transform: translate(2px, -2px);
     }
   }
 

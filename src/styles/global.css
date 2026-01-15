@@ -1,24 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
+  /* PRIMARY COLORS */
   --clr-main: #3e484d;
-
   --clr-dark: #121617;
   --clr-dark2: #181d1f;
-
   --clr-gray: #646464;
   --clr-border: #d8dbdc;
-
   --clr-white: #ebeded;
-
-  --transition: 0.12s ease;
-  --font1: "Montserrat", sans-serif;
-
   --clr-text: #ededed;
   --clr-background: #000000;
   --clr-primary: #af1a5b;
   --clr-second: #572188;
   --clr-accent: #af1a5b;
+
+  /* SECONDARY/LIGHT COLORS - Glassmorphism & Overlays */
+  --clr-glass-bg: #ffffff04;
+  --clr-glass-bg-hover: #ffffff10;
+  --clr-glass-border: #ffffff13;
+  --clr-glass-border-hover: #ffffff25;
+  --clr-glass-border-light: #ffffff15;
+  --clr-glass-border-strong: #ffffff5a;
+  --clr-glass-button-bg: #ffffff0e;
+  --clr-glass-button-hover: #ffffff0a;
+  --clr-glass-button-hover-alt: #ffffff11;
+
+  /* EFFECTS */
+  --blur-sm: blur(4px);
+  --blur-md: blur(7px);
+  --blur-lg: blur(10px);
+  --radius-default: 25px;
+  --radius-sm: 50px;
+  --radius-interactive: 10px;
+
+  /* TYPOGRAPHY & TIMING */
+  --transition: 0.12s ease;
+  --transition-md: 0.3s ease;
+  --font1: "Montserrat", sans-serif;
 }
 
 
@@ -132,22 +150,22 @@ button,
 .boton2 {
   cursor: pointer;
   padding: 14px 25px;
-  border-radius: 50px;
+  border-radius: var(--radius-sm);
   font-size: .9rem;
   font-weight: 500;
   letter-spacing: 4px;
   text-indent: 4px;
   text-transform: uppercase;
-  background-color: #ffffff0e;
-  backdrop-filter: blur(7px);
+  background-color: var(--clr-glass-button-bg);
+  backdrop-filter: var(--blur-md);
   color: var(--clr-white);
   transition: var(--transition);
-  border: solid 1px #ffffff15;
+  border: solid 1px var(--clr-glass-border-light);
 }
 
 .boton2 {
   background-color: transparent;
-  border: solid 1px #ffffff15;
+  border: solid 1px var(--clr-glass-border-light);
 }
 
 input {
@@ -171,7 +189,6 @@ span {
   color: var(--clr-accent);
 }
 
-.background-img {}
 
 @media (hover: hover) {
 
@@ -180,7 +197,7 @@ span {
   .boton2:hover,
   .bi:hover {
     /* transform: translate(0, -1px); */
-    background-color: #ffffff11;
+    background-color: var(--clr-glass-button-hover-alt);
     color: var(--clr-accent);
   }
 

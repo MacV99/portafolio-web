@@ -24,14 +24,14 @@ const experience = [
     ],
   },
   {
-    company: " KODLAND",
+    company: "KODLAND",
     position: "Programming Instructor (LUA / Roblox Studio)",
     summary:
       "Technical instructor responsible for teaching programming fundamentals and game development to children, fostering logical thinking and technical creativity.",
     highlights: [
-      " Delivered interactive programming lessons using LUA and Roblox Studio, simplifying complex coding concepts for students aged 8 to 12.",
-      "signed and supervised game development projects, guiding students through script implementation, mechanics, and environment design",
-      " Promoted the development of problem-solving skills and algorithmic logic using project-based learning methodologies",
+      "Delivered interactive programming lessons using LUA and Roblox Studio, simplifying complex coding concepts for students aged 8 to 12.",
+      "Designed and supervised game development projects, guiding students through script implementation, mechanics, and environment design",
+      "Promoted the development of problem-solving skills and algorithmic logic using project-based learning methodologies",
       "Managed student groups in a virtual environment, ensuring pedagogical goals were met while maintaining high engagement levels",
     ],
   },
@@ -42,16 +42,24 @@ const experience = [
   <h2>EXPERIENCE</h2>
   <div class="grid">
     {
-      experience.map((element) => (
+      experience.map((element, index) => (
         <article class="card">
           <h3>{element.company}</h3>
           <p class="position">{element.position}</p>
           <p>{element.summary}</p>
-          <br />
 
-          <ul class="highlights flex-row">
+          <button
+            class="toggle-btn"
+            data-target={`highlights-${index}`}
+            aria-expanded="false"
+          >
+            <span class="btn-text">Details</span>
+            <i class="bi bi-chevron-down icon" />
+          </button>
+
+          <ul class="highlights" id={`highlights-${index}`}>
             {element.highlights.map((highlight) => (
-              <li class="highlight"> ● {highlight}</li>
+              <li class="highlight">● {highlight}</li>
             ))}
           </ul>
         </article>
@@ -78,16 +86,22 @@ const experience = [
   }
 
   .card {
-    background-color: #ffffff04;
-    border: solid 1px #ffffff13;
-    backdrop-filter: blur(7px);
-    border-radius: 25px;
+    background-color: var(--clr-glass-bg);
+    border: solid 1px var(--clr-glass-border);
+    backdrop-filter: var(--blur-md);
+    border-radius: var(--radius-default);
     padding: 20px;
     transition: var(--transition);
     align-items: start;
-    gap: 2px;
+    gap: 10px;
     width: 100%;
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-text {
+    color: #fff;
   }
 
   .card h3 {
@@ -96,28 +110,76 @@ const experience = [
   }
 
   .card p.position {
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
 
-  .card .boton {
-    margin-top: auto;
-    /* border: solid 1px var(--clr-border); */
+  /* Botón de toggle */
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: solid 1px var(--clr-glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--clr-white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-indent: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 5px;
   }
 
+  .toggle-btn .icon {
+    font-size: 14px;
+    transition: transform var(--transition-md);
+  }
+
+  .toggle-btn[aria-expanded="true"] .icon {
+    transform: rotate(180deg);
+  }
+
+  .toggle-btn:hover {
+    background-color: var(--clr-glass-button-hover);
+    border-color: var(--clr-glass-border-hover);
+  }
+
+  /* Lista de highlights */
   .highlights {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: flex-start;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      margin-top 0.3s ease;
+    margin-top: 0;
+  }
+
+  .highlights.active {
+    max-height: 1000px; /* Ajusta según necesites */
+    opacity: 1;
+    margin-top: 10px;
   }
 
   .highlight {
     padding: 10px 15px;
     width: 100%;
     border-radius: 15px;
+    background-color: #ffffff05;
+    border: solid 1px #ffffff08;
   }
 
   @media (hover: hover) {
+    .card:hover {
+      border-color: var(--clr-glass-border-hover);
+    }
   }
 
   /* DESKTOP - A partir de 750px */
@@ -128,12 +190,30 @@ const experience = [
       justify-content: center;
     }
 
-    .card {
-      /* max-width: 900px; */
-    }
-
     h2 {
       font-size: 3rem;
     }
   }
 </style>
+
+<script>
+  //@ts-nocheck
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButtons = document.querySelectorAll(".toggle-btn");
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetId = button.getAttribute("data-target");
+        const highlightsList = document.getElementById(targetId);
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+        const btnText = button.querySelector(".btn-text");
+
+        // Toggle aria-expanded
+        button.setAttribute("aria-expanded", !isExpanded);
+
+        // Toggle active class
+        highlightsList.classList.toggle("active");
+      });
+    });
+  });
+</script>
