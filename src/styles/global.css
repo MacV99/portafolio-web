@@ -7,19 +7,18 @@
   --clr-dark2: #181d1f;
 
   --clr-gray: #646464;
-  --clr-text: #d0d0d0;
   --clr-border: #d8dbdc;
 
   --clr-white: #ebeded;
 
-  --transition: 0.11s ease;
+  --transition: 0.12s ease;
   --font1: "Montserrat", sans-serif;
 
   --clr-text: #ededed;
   --clr-background: #000000;
-  --clr-primary: #c09be3;
+  --clr-primary: #af1a5b;
   --clr-second: #572188;
-  --clr-accent: #9951db;
+  --clr-accent: #af1a5b;
 }
 
 
@@ -47,7 +46,7 @@ body {
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-  background-color: #000000a7;
+  background-color: #000000e7;
   background-blend-mode: darken;
 
 
@@ -66,10 +65,16 @@ a {
   text-decoration: none;
 }
 
+a {
+  cursor: pointer;
+}
+
 i.bi {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
+  transition: var(--transition);
 }
 
 h1,
@@ -79,7 +84,7 @@ h4,
 h5 {
   font-weight: 700;
   letter-spacing: 2px;
-  padding-left: 2px;
+  text-indent: 2px;
 
 }
 
@@ -111,7 +116,6 @@ section>h2 {
 section,
 footer {
   padding: 40px 20px;
-  gap: 0px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -126,6 +130,7 @@ footer>* {
 button,
 .boton,
 .boton2 {
+  cursor: pointer;
   padding: 14px 25px;
   border-radius: 50px;
   font-size: .9rem;
@@ -166,12 +171,17 @@ span {
   color: var(--clr-accent);
 }
 
+.background-img {}
+
 @media (hover: hover) {
 
   button:hover,
   .boton:hover,
-  .boton2:hover {
-    transform: translate(0, -1px)
+  .boton2:hover,
+  .bi:hover {
+    /* transform: translate(0, -1px); */
+    background-color: #ffffff11;
+    color: var(--clr-accent);
   }
 
   .boton2:hover {

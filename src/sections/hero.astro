@@ -1,67 +1,132 @@
 ---
-const { title, span, bg_image } = Astro.props;
+
 ---
 
-<section class="flex-column" style={`--bg-image: url('${bg_image || ""}')`}>
-  <div>
-    <h1>{title}</h1>
-    {span && <span>{span}</span>}
-    <slot />
-    <div class="buttons flex-row">
-      <a
-        class="boton"
-        href="/docs/CV-Miguel_Cuellar(English).pdf"
-        target="_blank">Download CV</a
-      >
+<section class="flex-column">
+  <div class="flex-row">
+    <div class="flex-column grid-info">
+      <h1 class="title">MacV</h1>
+      <span>Miguel Angel Cuellar Velandia</span>
+      <div class="buttons flex-row">
+        <a
+          class="boton"
+          href="/docs/CV-Miguel_Cuellar(English).pdf"
+          target="_blank">Download CV</a
+        >
+        <div class="social-networks flex-row">
+          <a
+            href="https://www.linkedin.com/in/miguel-angel-cuellar-velandia-259848240/"
+            target="_blank"
+          >
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://github.com/MacV99" target="_blank">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.instagram.com/macv_9" target="_blank">
+            <i class="bi bi-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="/img/imgProfile.png" alt="" />
     </div>
   </div>
-</section>
 
-<style>
-  section {
-    gap: 0px;
-  }
+  <style>
+    .social-networks {
+      gap: 10px;
+    }
 
-  section > div {
-    width: 100%;
-  }
+    .social-networks .bi {
+      font-size: 20px;
+      padding: 12px;
+      border-radius: 180px;
+      background-color: #ffffff19;
+      border: solid 1px #ffffff13;
+      backdrop-filter: blur(7px);
+    }
 
-  .buttons {
-    gap: 10px;
-    margin: 10px;
-  }
+    section {
+      flex-wrap: wrap;
+      background-color: #00000066;
+    }
 
-  h1 {
-    font-family: var(--font1);
-    color: var(--clr-accent);
-    font-size: 4.5rem;
-    line-height: normal;
-    font-weight: 600;
-    letter-spacing: 10px;
-    padding-left: 10px;
-  }
+    section img {
+      background-color: #ffffff04;
+      border: solid 1px #ffffff13;
+      backdrop-filter: blur(7px);
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 40px;
+      object-fit: contain;
+    }
 
-  h3 {
-    line-height: normal;
-  }
+    section > div {
+      width: 100%;
+      gap: 1px;
+    }
 
-  span {
-    color: #fff;
-    font-size: 1rem;
-    margin-top: -15px;
-    margin-left: 10px;
-    display: block;
-    font-style:;
-  }
+    section .flex-column {
+      align-items: flex-start;
+      width: fit-content;
+    }
 
-  @media (min-width: 750px) {
-    h1 {
-      font-size: 6rem;
+    section .buttons {
+      gap: 10px;
+      margin: 10px 0px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: fit-content;
+    }
+
+    section h1,
+    .title {
+      /* color: var(--clr-accent); */
+      font-size: 4.5rem;
+      font-weight: 100;
+      width: 100%;
+      text-align: left;
+      letter-spacing: 9px;
+      text-indent: 0;
+      margin-left: -8px;
+    }
+
+    h3 {
+      line-height: normal;
     }
 
     span {
-      font-size: 1.3rem;
-      margin-top: -20px;
+      color: #fff;
+      font-size: 0.87rem;
+      margin-top: -15px;
+      display: block;
+      font-weight: 700;
     }
-  }
-</style>
+
+    section .grid-info {
+      width: fit-content;
+    }
+
+    @media (min-width: 750px) {
+      section h1 {
+        font-size: 10rem;
+        margin-left: -20px;
+        letter-spacing: 10px;
+      }
+
+      section span {
+        font-size: 1.23rem;
+        margin-top: -32px;
+        letter-spacing: 5px;
+      }
+
+      section > div {
+        gap: 40px;
+      }
+    }
+  </style>
+</section>

@@ -51,8 +51,7 @@ const experience = [
 
           <ul class="highlights flex-row">
             {element.highlights.map((highlight) => (
-              <li class="highlight">{highlight}</li>
-              <br />
+              <li class="highlight"> ● {highlight}</li>
             ))}
           </ul>
         </article>
@@ -63,10 +62,10 @@ const experience = [
 
 <style>
   h2 {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
     font-size: 2rem;
-    color: var(--clr-primary);
   }
 
   .grid {
@@ -79,7 +78,9 @@ const experience = [
   }
 
   .card {
-    background-color: #ffffff12;
+    background-color: #ffffff04;
+    border: solid 1px #ffffff13;
+    backdrop-filter: blur(7px);
     border-radius: 25px;
     padding: 20px;
     transition: var(--transition);
@@ -87,7 +88,6 @@ const experience = [
     gap: 2px;
     width: 100%;
     max-width: 100%;
-    backdrop-filter: blur(7px);
   }
 
   .card h3 {
@@ -104,19 +104,17 @@ const experience = [
     /* border: solid 1px var(--clr-border); */
   }
 
-  .highlights{
-    gap: 10px; 
+  .highlights {
+    gap: 10px;
     flex-wrap: wrap;
     align-items: stretch;
     justify-content: flex-start;
   }
 
-  .highlight{
+  .highlight {
     padding: 10px 15px;
-    width: fit-content;
-    max-width: 300px;
+    width: 100%;
     border-radius: 15px;
-    background-color: var(--clr-background);
   }
 
   @media (hover: hover) {
