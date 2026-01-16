@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
-import Footer from "../sections/footer.astro";
-import Header from "../components/header.astro";
+import Starfield from "../components/Starfield.astro";
 
 const { title } = Astro.props;
 ---
@@ -21,6 +20,7 @@ const { title } = Astro.props;
   </head>
 
   <body>
+    <Starfield />
     <main>
       <slot />
     </main>
