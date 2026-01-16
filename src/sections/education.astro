@@ -30,7 +30,7 @@ const education = [
           href={element.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="card flex-column"
+          class="card-glass flex-column"
         >
           <h3>{element.institution}</h3>
           <p class="degree">{element.degree}</p>
@@ -58,13 +58,8 @@ const education = [
     align-items: stretch;
   }
 
-  .card {
-    background-color: var(--clr-glass-bg);
-    border: solid 1px var(--clr-glass-border);
-    backdrop-filter: var(--blur);
-    border-radius: var(--radius-default);
+  .card-glass {
     padding: 20px;
-    transition: var(--transition);
     align-items: start;
     gap: 2px;
     width: 100%;
@@ -74,21 +69,22 @@ const education = [
     color: inherit;
   }
 
-  .card h3 {
+  .card-glass h3 {
     font-size: 1.3rem;
     padding-left: 0;
+    text-indent: 0;
   }
 
-  .card p.degree {
+  .card-glass p.degree {
     margin-bottom: 12px;
   }
 
-  .card .date {
+  .card-glass .date {
     margin-top: auto;
     margin-bottom: 0px;
   }
 
-  .card .icon {
+  .card-glass .icon {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -98,15 +94,9 @@ const education = [
   }
 
   @media (hover: hover) {
-    .card:hover {
-      border-radius: var(--radius-interactive);
-      background-color: var(--clr-glass-bg-hover);
-      border-color: var(--clr-glass-border-hover);
-    }
-
-    .card:hover .icon {
-      opacity: 1;
-      transform: translate(2px, -2px);
+    .card-glass:hover .icon {
+      color: var(--clr-primary);
+      opacity: 0.8;
     }
   }
 
@@ -118,12 +108,8 @@ const education = [
       justify-content: center;
     }
 
-    .card {
+    .card-glass {
       max-width: 350px;
-    }
-
-    h2 {
-      font-size: 3rem;
     }
   }
 </style>

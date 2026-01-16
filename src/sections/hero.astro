@@ -40,23 +40,23 @@
     gap: 10px;
   }
 
-  .social-networks .bi {
+  .bi {
     font-size: 20px;
     padding: 12px;
     border-radius: 180px;
-    background-color: #ffffff19;
-    border: solid 1px #ffffff13;
+    background-color: #ffffff05;
+    border: solid 1px var(--clr-border);
     backdrop-filter: var(--blur);
   }
 
   section {
     flex-wrap: wrap;
-    border-bottom: solid 1px #ffffff13;
+    border-bottom: solid 1px var(--clr-border);
     backdrop-filter: var(--blur);
   }
 
   section img {
-    border: solid 1px #ffffff13;
+    border: solid 1px var(--clr-border);
     backdrop-filter: var(--blur);
     width: 100%;
     max-width: 200px;
@@ -68,6 +68,7 @@
   section > div {
     width: 100%;
     gap: 1px;
+    flex-wrap: wrap-reverse;
   }
 
   section .flex-column {
@@ -78,7 +79,7 @@
   section .buttons {
     gap: 10px;
     margin: 10px 0px;
-    justify-content: flex-start;
+
     flex-wrap: wrap;
     gap: 10px;
     width: fit-content;
@@ -87,13 +88,11 @@
   section h1,
   .title {
     /* color: var(--clr-accent); */
-    font-size: 4.5rem;
+    font-size: 4.8rem;
     font-weight: 100;
     width: 100%;
-    text-align: left;
-    letter-spacing: 9px;
-    text-indent: 0;
-    margin-left: -8px;
+    letter-spacing: 21px;
+    text-indent: 10px;
   }
 
   h3 {
@@ -101,32 +100,53 @@
   }
 
   span {
-    color: #fff;
-    font-size: 0.87rem;
-    margin-top: -15px;
+    color: var(--clr-accent);
+    font-family: var(--font2);
+    font-size: 1rem;
+    margin-top: -14px;
     display: block;
     font-weight: 700;
+    letter-spacing: 2px;
+    text-indent: 2px;
   }
 
   section .grid-info {
-    width: fit-content;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media (hover: hover) {
+    .bi:hover {
+      background-color: #ffffff09;
+      color: var(--clr-accent);
+      transform: rotate(20deg);
+    }
   }
 
   @media (min-width: 750px) {
     section h1 {
-      font-size: 10rem;
-      margin-left: -20px;
+      font-size: 8.5rem;
+      margin-left: -6px;
       letter-spacing: 10px;
+      text-indent: 0;
+      text-align: left;
     }
 
     section span {
       font-size: 1.23rem;
-      margin-top: -32px;
+      margin-top: -30px;
       letter-spacing: 5px;
     }
 
     section > div {
       gap: 40px;
+      flex-wrap: nowrap;
+    }
+
+    section .grid-info {
+      align-items: flex-start;
     }
   }
 </style>

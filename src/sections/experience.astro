@@ -43,7 +43,7 @@ const experience = [
   <div class="grid">
     {
       experience.map((element, index) => (
-        <article class="card">
+        <article class="card-glass flex-column">
           <h3>{element.company}</h3>
           <p class="position">{element.position}</p>
           <p>{element.summary}</p>
@@ -73,7 +73,6 @@ const experience = [
     text-align: left;
     width: 100%;
     margin-bottom: 10px;
-    font-size: 2rem;
   }
 
   .grid {
@@ -85,32 +84,27 @@ const experience = [
     align-items: stretch;
   }
 
-  .card {
-    background-color: var(--clr-glass-bg);
-    border: solid 1px var(--clr-glass-border);
-    backdrop-filter: var(--blur);
-    border-radius: var(--radius-default);
+  .card-glass {
     padding: 20px;
-    transition: var(--transition);
-    align-items: start;
     gap: 10px;
     width: 100%;
     max-width: 100%;
-    display: flex;
-    flex-direction: column;
+    align-items: start;
   }
 
   .btn-text {
     color: #fff;
+    transition: var(--transition);
   }
 
-  .card h3 {
+  .card-glass h3 {
     font-size: 1.3rem;
     padding-left: 0;
+    text-indent: 0;
   }
 
-  .card p.position {
-    margin-bottom: 0;
+  .card-glass p.position {
+    margin-top: -10px;
   }
 
   /* Botón de toggle */
@@ -120,9 +114,9 @@ const experience = [
     gap: 8px;
     padding: 8px 16px;
     background-color: transparent;
-    border: solid 1px var(--clr-glass-border);
-    border-radius: var(--radius-sm);
-    color: var(--clr-white);
+    background-color: #ffffff05;
+    border: solid 1px var(--clr-border);
+    border-radius: 100px;
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 1px;
@@ -139,11 +133,6 @@ const experience = [
 
   .toggle-btn[aria-expanded="true"] .icon {
     transform: rotate(180deg);
-  }
-
-  .toggle-btn:hover {
-    background-color: var(--clr-glass-button-hover);
-    border-color: var(--clr-glass-border-hover);
   }
 
   /* Lista de highlights */
@@ -172,13 +161,18 @@ const experience = [
     padding: 10px 15px;
     width: 100%;
     border-radius: 15px;
-    background-color: #ffffff05;
-    border: solid 1px #ffffff08;
+    background-color: #ffffff03;
+    border: solid 1px var(--clr-border);
   }
 
   @media (hover: hover) {
-    .card:hover {
-      border-color: var(--clr-glass-border-hover);
+    .toggle-btn:hover .btn-text {
+      color: var(--clr-primary);
+    }
+
+    .card-glass:hover .position {
+      color: var(--clr-primary);
+      transition: var(--transition);
     }
   }
 
@@ -188,10 +182,6 @@ const experience = [
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
-    }
-
-    h2 {
-      font-size: 3rem;
     }
   }
 </style>

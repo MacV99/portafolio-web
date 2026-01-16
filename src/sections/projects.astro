@@ -43,7 +43,7 @@ const proyectos = [
   <div class="grid">
     {
       proyectos.map((proyecto) => (
-        <article class="card flex-column">
+        <article class="flex-column card-glass">
           <h3>{proyecto.nombre}</h3>
           <p>{proyecto.descripcion}</p>
 
@@ -66,7 +66,6 @@ const proyectos = [
     text-align: left;
     width: 100%;
     margin-bottom: 20px;
-    font-size: 2rem;
     /* color: var(--clr-primary); */
   }
 
@@ -79,38 +78,31 @@ const proyectos = [
     align-items: stretch;
   }
 
-  .card {
-    background-color: var(--clr-glass-bg);
-    border: solid 1px var(--clr-glass-border);
-    backdrop-filter: var(--blur);
-    border-radius: var(--radius-default);
+  .card-glass {
     padding: 20px;
-    transition: var(--transition);
     align-items: start;
     gap: 2px;
     width: 100%;
     max-width: 100%;
   }
 
-  .card h3 {
+  .card-glass h3 {
     font-size: 1.3rem;
     padding-left: 0;
+    text-indent: 0;
   }
 
-  .card p {
+  .card-glass p {
     margin-bottom: 12px;
   }
 
-  .card .boton {
+  .card-glass .boton {
     margin-top: auto;
+    border-radius: 15px;
     /* border: solid 1px var(--clr-border); */
   }
 
   @media (hover: hover) {
-    .card:hover {
-      border-radius: var(--radius-interactive);
-      background-color: var(--clr-glass-bg-hover);
-    }
   }
 
   /* DESKTOP - A partir de 750px */
@@ -121,12 +113,8 @@ const proyectos = [
       justify-content: center;
     }
 
-    .card {
+    .card-glass {
       max-width: 350px;
-    }
-
-    h2 {
-      font-size: 3rem;
     }
   }
 </style>
