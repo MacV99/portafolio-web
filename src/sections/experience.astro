@@ -39,7 +39,7 @@ const experience = [
 ---
 
 <section id="experience">
-  <h2>EXPERIENCE</h2>
+  <h2>EXP<span>ERIENCE</span></h2>
   <div class="grid">
     {
       experience.map((element, index) => (
@@ -105,6 +105,7 @@ const experience = [
 
   .card-glass p.position {
     margin-top: -10px;
+    transition: var(--transition);
   }
 
   /* Botón de toggle */
@@ -152,7 +153,7 @@ const experience = [
   }
 
   .highlights.active {
-    max-height: 1000px; /* Ajusta según necesites */
+    max-height: 1000px;
     opacity: 1;
     margin-top: 10px;
   }
@@ -162,7 +163,7 @@ const experience = [
     width: 100%;
     border-radius: 15px;
     background-color: #ffffff03;
-    border: solid 1px var(--clr-border);
+    /* border: solid 1px var(--clr-border); */
   }
 
   @media (hover: hover) {
@@ -171,8 +172,8 @@ const experience = [
     }
 
     .card-glass:hover .position {
-      color: var(--clr-primary);
-      transition: var(--transition);
+      color: #fff;
+      letter-spacing: 1px;
     }
   }
 
