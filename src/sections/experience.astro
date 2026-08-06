@@ -1,45 +1,19 @@
 ---
-const experience = [
-  {
-    company: "Boliglobos Latino",
-    position: "Frontend Developer",
-    summary:
-      "Technology solutions lead in charge of digital architecture and process automation to optimize company operations and sales.",
-    highlights: [
-      "Designed and developed the corporate website and E-commerce platform, centralizing the brand's digital presence",
-      "Implemented and managed the E-learning platform using Odoo, streamlining digital training and content access",
-      "Developed a custom digital certificate system integrated into the website, automating document generation and delivery",
-      "Led the implementation of Escala (CRM) for communication workflows and WhatsApp automation, improving customer service efficiency",
-      "Integrated the Odoo ecosystem to provide unified management for sales, learning, and web administration",
-    ],
-  },
-  {
-    company: "Alcaldía de Neiva",
-    position: "Webmaster",
-    summary:
-      "Progressed from Intern to full-time Software Engineer within the Webmaster department, leading the modernization of institutional portals and user interface optimization.",
-    highlights: [
-      "Led the modernization of the CSS architecture for the Secretary's web portals, enhancing User Experience (UX) and mobile responsiveness.",
-      "Managed the maintenance and updates of critical content on the institutional website following Digital Government standards.",
-    ],
-  },
-  {
-    company: "KODLAND",
-    position: "Programming Instructor (LUA / Roblox Studio)",
-    summary:
-      "Technical instructor responsible for teaching programming fundamentals and game development to children, fostering logical thinking and technical creativity.",
-    highlights: [
-      "Delivered interactive programming lessons using LUA and Roblox Studio, simplifying complex coding concepts for students aged 8 to 12.",
-      "Designed and supervised game development projects, guiding students through script implementation, mechanics, and environment design",
-      "Promoted the development of problem-solving skills and algorithmic logic using project-based learning methodologies",
-      "Managed student groups in a virtual environment, ensuring pedagogical goals were met while maintaining high engagement levels",
-    ],
-  },
-];
+// Contenido en src/i18n/ui.ts
+import {
+  useTranslations,
+  experience as experienceData,
+  defaultLang,
+  type Lang,
+} from "../i18n/ui";
+
+const { lang = defaultLang } = Astro.props as { lang?: Lang };
+const t = useTranslations(lang);
+const experience = experienceData[lang];
 ---
 
 <section id="experience">
-  <h2>EXP<span>ERIENCE</span></h2>
+  <h2>{t("experience.title.a")}<span>{t("experience.title.b")}</span></h2>
   <div class="grid">
     {
       experience.map((element, index) => (
@@ -53,7 +27,7 @@ const experience = [
             data-target={`highlights-${index}`}
             aria-expanded="false"
           >
-            <span class="btn-text">Details</span>
+            <span class="btn-text">{t("experience.details")}</span>
             <i class="bi bi-chevron-down icon" />
           </button>
 

@@ -1,29 +1,20 @@
 ---
-const education = [
-  {
-    institution: "UNIVERSIDAD SURCOLOMBIANA",
-    degree: "Software Engineer",
-    date: "2019 - 2024",
-    href: "/docs/DIPLOMA ING SOFTWARE.pdf",
-  },
-  {
-    institution: "FreeCodeCamp",
-    degree: "RESPONSIVE WEB DESIGN",
-    date: "June 2023",
-    href: "/docs/Certificado-responsive-web-design.pdf",
-  },
-  {
-    institution: "Matlab Onramp",
-    degree: "MATLAB",
-    date: "July 2021",
-    href: "/docs/mathlab_certificate.pdf",
-  },
-];
+// Contenido en src/i18n/ui.ts
+import {
+  useTranslations,
+  education as educationData,
+  defaultLang,
+  type Lang,
+} from "../i18n/ui";
+
+const { lang = defaultLang } = Astro.props as { lang?: Lang };
+const t = useTranslations(lang);
+const education = educationData[lang];
 ---
 
 <section id="education">
   <h2>
-    EDU<span>CATION</span>
+    {t("education.title.a")}<span>{t("education.title.b")}</span>
   </h2>
   <div class="grid">
     {

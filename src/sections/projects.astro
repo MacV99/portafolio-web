@@ -1,42 +1,19 @@
 ---
-// Lista de proyectos - solo editas aquí para agregar más
-const proyectos = [
-  {
-    id: 1,
-    nombre: "STAURANT",
-    descripcion:
-      "A gastronomic social platform designed for granular dish-by-dish rating and personalized culinary recommendations.",
-    // TODO: URL real del proyecto (antes: https://miportfolio.com — placeholder)
-    url: "",
-  },
-  {
-    id: 2,
-    nombre: "CERTIYÁ",
-    descripcion:
-      "An automated digital certification system that eliminates manual processing through instant web-based generation.",
-    url: "https://maciainteli.com/certificados/",
-  },
-  {
-    id: 3,
-    nombre: "Maintenance Reporting System",
-    descripcion:
-      "A technical documentation tool designed to automate service reports and track equipment maintenance history.",
-    // TODO: URL real (antes apuntaba a /projects/thesimpsons/ — página inexistente)
-    url: "",
-  },
-  {
-    id: 4,
-    nombre: "Customer Management System",
-    descripcion:
-      "A self-service customer portal focused on reducing response times through automated information access.",
-    // TODO: URL real (antes apuntaba a /projects/thesimpsons/ — página inexistente)
-    url: "",
-  },
-];
+// Contenido en src/i18n/ui.ts — editar allí para agregar proyectos
+import {
+  useTranslations,
+  projects,
+  defaultLang,
+  type Lang,
+} from "../i18n/ui";
+
+const { lang = defaultLang } = Astro.props as { lang?: Lang };
+const t = useTranslations(lang);
+const proyectos = projects[lang];
 ---
 
 <section class="proyectos">
-  <h2>Pro<span>jects</span></h2>
+  <h2>{t("projects.title.a")}<span>{t("projects.title.b")}</span></h2>
 
   <div class="grid">
     {
@@ -52,11 +29,11 @@ const proyectos = [
               rel="noopener noreferrer"
               class="boton"
             >
-              View Project
+              {t("projects.view")}
             </a>
           ) : (
             <span class="boton boton-disabled" aria-disabled="true">
-              Coming soon
+              {t("projects.soon")}
             </span>
           )}
         </article>

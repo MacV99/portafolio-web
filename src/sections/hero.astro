@@ -1,6 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import profile from "../assets/macv.png";
+import { useTranslations, defaultLang, type Lang } from "../i18n/ui";
+
+const { lang = defaultLang } = Astro.props as { lang?: Lang };
+const t = useTranslations(lang);
 ---
 
 <section class="flex-column">
@@ -11,8 +15,8 @@ import profile from "../assets/macv.png";
       <div class="buttons flex-row">
         <a
           class="boton"
-          href="/docs/CV-Miguel_Cuellar(English).pdf"
-          target="_blank">Download CV</a
+          href={t("hero.cvHref")}
+          target="_blank">{t("hero.cv")}</a
         >
         <div class="social-networks flex-row">
           <a

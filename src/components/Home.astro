@@ -1,0 +1,34 @@
+---
+import Layout1 from "../layouts/Layout1.astro";
+import Hero from "../sections/hero.astro";
+import Projects from "../sections/projects.astro";
+import Education from "../sections/education.astro";
+import Experience from "../sections/experience.astro";
+import { useTranslations, defaultLang, type Lang } from "../i18n/ui";
+
+const { lang = defaultLang } = Astro.props as { lang?: Lang };
+const t = useTranslations(lang);
+---
+
+<Layout1 title={t("meta.title")} description={t("meta.description")} lang={lang}>
+  <Hero lang={lang} />
+
+  <section id="about-me">
+    <h2>{t("about.title.a")}<span>{t("about.title.b")}</span></h2>
+    <p>{t("about.text")}</p>
+  </section>
+
+  <Projects lang={lang} />
+
+  <Experience lang={lang} />
+
+  <Education lang={lang} />
+</Layout1>
+
+<style>
+  #about-me h2 {
+    width: 100%;
+    text-align: left;
+    text-indent: 0;
+  }
+</style>
