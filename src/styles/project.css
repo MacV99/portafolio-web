@@ -1,7 +1,0 @@
-.card-glass {
-  border: solid 1px var(--clr-border);
-  border-radius: 25px;
-  backdrop-filter: var(--blur);
-  transition: var(--transition);
-  background-color: #ffffff01;
-}

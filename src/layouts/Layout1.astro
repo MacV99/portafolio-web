@@ -1,23 +1,50 @@
 ---
+// Fuentes self-hosted (sin render-block del CDN de Google)
+import "@fontsource-variable/montserrat";
+import "@fontsource/orbitron/400.css";
+import "@fontsource/orbitron/500.css";
+import "@fontsource/orbitron/700.css";
+import "@fontsource/orbitron/900.css";
+
+// Iconos self-hosted (sin render-block del CDN de jsdelivr)
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 import "../styles/global.css";
-import "../styles/project.css";
 import Starfield from "../components/Starfield.astro";
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "Miguel Angel Cuellar Velandia (MacV) — Software Engineer specialized in Astro, Python, JavaScript and web development.",
+  image = "/img/macv.jpg",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const ogImage = new URL(image, Astro.site ?? Astro.url);
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
 
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
 
   <body>

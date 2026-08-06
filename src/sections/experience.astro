@@ -189,22 +189,27 @@ const experience = [
 
 <script>
   //@ts-nocheck
-  document.addEventListener("DOMContentLoaded", () => {
+  function initExperienceToggles() {
     const toggleButtons = document.querySelectorAll(".toggle-btn");
 
     toggleButtons.forEach((button) => {
+      // Evita re-enlazar el listener si se re-ejecuta (View Transitions)
+      if (button.dataset.bound) return;
+      button.dataset.bound = "true";
+
       button.addEventListener("click", () => {
         const targetId = button.getAttribute("data-target");
         const highlightsList = document.getElementById(targetId);
         const isExpanded = button.getAttribute("aria-expanded") === "true";
-        const btnText = button.querySelector(".btn-text");
 
-        // Toggle aria-expanded
-        button.setAttribute("aria-expanded", !isExpanded);
-
-        // Toggle active class
+        button.setAttribute("aria-expanded", String(!isExpanded));
         highlightsList.classList.toggle("active");
       });
     });
-  });
+  }
+
+  // Corre ya (los <script> de Astro son deferred: el DOM ya está listo)
+  initExperienceToggles();
+  // Y de nuevo si algún día usas el router de Astro (<ClientRouter/>)
+  document.addEventListener("astro:page-load", initExperienceToggles);
 </script>

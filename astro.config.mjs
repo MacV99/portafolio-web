@@ -2,5 +2,5 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // Vacío o con tus otras configs
+  site: 'https://portafoliomacv.netlify.app',
 });

@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-
 :root {
   /* PRIMARY COLORS */
   --clr-primary: #af1a5b;
@@ -18,7 +15,7 @@
   /* TYPOGRAPHY & TIMING */
   --transition: 0.12s ease;
   --transition-md: 0.3s ease;
-  --font1: "Montserrat", sans-serif;
+  --font1: "Montserrat Variable", "Montserrat", sans-serif;
   --font2: "Orbitron", sans-serif;
 }
 
@@ -150,6 +147,14 @@ button,
 
 .boton2 {
   background-color: transparent;
+}
+
+.card-glass {
+  border: solid 1px var(--clr-border);
+  border-radius: 25px;
+  backdrop-filter: var(--blur);
+  transition: var(--transition);
+  background-color: #ffffff01;
 }
 
 span {

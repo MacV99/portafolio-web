@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import profile from "../assets/macv.png";
 ---
 
 <section class="flex-column">
@@ -30,7 +31,14 @@
       </div>
     </div>
     <div>
-      <img src="/img/macv.png" alt="" />
+      <Image
+        src={profile}
+        alt="Miguel Angel Cuellar Velandia (MacV)"
+        width={440}
+        height={490}
+        loading="eager"
+        format="webp"
+      />
     </div>
   </div>
 </section>

@@ -6,7 +6,8 @@ const proyectos = [
     nombre: "STAURANT",
     descripcion:
       "A gastronomic social platform designed for granular dish-by-dish rating and personalized culinary recommendations.",
-    url: "https://miportfolio.com",
+    // TODO: URL real del proyecto (antes: https://miportfolio.com — placeholder)
+    url: "",
   },
   {
     id: 2,
@@ -20,20 +21,16 @@ const proyectos = [
     nombre: "Maintenance Reporting System",
     descripcion:
       "A technical documentation tool designed to automate service reports and track equipment maintenance history.",
-    url: "/projects/thesimpsons/",
+    // TODO: URL real (antes apuntaba a /projects/thesimpsons/ — página inexistente)
+    url: "",
   },
   {
     id: 4,
     nombre: "Customer Management System",
     descripcion:
       "A self-service customer portal focused on reducing response times through automated information access.",
-    url: "/projects/thesimpsons/",
-  },
-  {
-    id: 5,
-    nombre: "The Simpsons",
-    descripcion: "The Simpsons",
-    url: "/projects/thesimpsons/",
+    // TODO: URL real (antes apuntaba a /projects/thesimpsons/ — página inexistente)
+    url: "",
   },
 ];
 ---
@@ -48,14 +45,20 @@ const proyectos = [
           <h3>{proyecto.nombre}</h3>
           <p>{proyecto.descripcion}</p>
 
-          <a
-            href={proyecto.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="boton"
-          >
-            View Project
-          </a>
+          {proyecto.url ? (
+            <a
+              href={proyecto.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="boton"
+            >
+              View Project
+            </a>
+          ) : (
+            <span class="boton boton-disabled" aria-disabled="true">
+              Coming soon
+            </span>
+          )}
         </article>
       ))
     }
@@ -101,6 +104,11 @@ const proyectos = [
     margin-top: auto;
     border-radius: 15px;
     /* border: solid 1px var(--clr-border); */
+  }
+
+  .boton-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
   }
 
   @media (hover: hover) {
