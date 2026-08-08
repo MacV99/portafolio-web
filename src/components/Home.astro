@@ -1,7 +1,7 @@
 ---
 import Layout1 from "../layouts/Layout1.astro";
 import Hero from "../sections/hero.astro";
-import Projects from "../sections/projects.astro";
+import Casos from "../sections/casos.astro";
 import Education from "../sections/education.astro";
 import Experience from "../sections/experience.astro";
 import { useTranslations, defaultLang, type Lang } from "../i18n/ui";
@@ -18,7 +18,7 @@ const t = useTranslations(lang);
     <p>{t("about.text")}</p>
   </section>
 
-  <Projects lang={lang} />
+  <Casos lang={lang} />
 
   <Experience lang={lang} />
 

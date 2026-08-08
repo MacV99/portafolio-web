@@ -1,0 +1,21 @@
+---
+import Layout1 from "../../../layouts/Layout1.astro";
+import CaseStudy from "../../../components/CaseStudy.astro";
+import { getCaseStudies, type Lang } from "../../../i18n/ui";
+
+const lang: Lang = "en";
+
+export function getStaticPaths() {
+  return getCaseStudies("en").map((caso) => ({
+    params: { slug: caso.slug },
+    props: { caso },
+  }));
+}
+
+const { caso } = Astro.props;
+const title = `${caso.nombre} | MacV`;
+---
+
+<Layout1 title={title} description={caso.descripcion} lang={lang}>
+  <CaseStudy caso={caso} lang={lang} />
+</Layout1>

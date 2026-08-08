@@ -1,0 +1,287 @@
+---
+// Renderiza el detalle de un caso de éxito. Reutilizable para cualquier caso.
+import {
+  useTranslations,
+  localizedPath,
+  defaultLang,
+  type Lang,
+  type CaseStudy,
+} from "../i18n/ui";
+
+interface Props {
+  caso: CaseStudy;
+  lang?: Lang;
+}
+
+const { caso, lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<article class="caso">
+  <a href={`${localizedPath("/", lang)}#casos`} class="back boton2">
+    <i class="bi bi-arrow-left"></i>{t("cases.back")}
+  </a>
+
+  <header class="caso-head">
+    {caso.cliente !== caso.nombre && <p class="cliente">{caso.cliente}</p>}
+    <h1>{caso.nombre}</h1>
+    <p class="tagline">{caso.tagline}</p>
+
+    {
+      caso.urlPrincipal && (
+        <a
+          href={caso.urlPrincipal}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="boton visit"
+        >
+          {t("cases.visit")}<i class="bi bi-box-arrow-up-right" />
+        </a>
+      )
+    }
+  </header>
+
+  <section class="bloque">
+    <p class="descripcion">{caso.descripcion}</p>
+  </section>
+
+  {
+    caso.trabajos.length > 0 && (
+      <section class="trabajos">
+        <h2 class="section-title">{t("cases.work")}</h2>
+
+        <div class:list={["trabajos-grid", { multi: caso.trabajos.length > 1 }]}>
+          {caso.trabajos.map((trabajo, i) => (
+            <article class="trabajo card-glass">
+              <span class="num">{String(i + 1).padStart(2, "0")}</span>
+              <div class="trabajo-body">
+                <h3>{trabajo.titulo}</h3>
+                <p>{trabajo.detalle}</p>
+
+                {trabajo.resultado && (
+                  <p class="resultado">
+                    <span class="meta-label">{t("cases.result")}</span>
+                    {trabajo.resultado}
+                  </p>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    caso.stack.length > 0 && (
+      <section class="stack-section">
+        <h2 class="section-title">{t("cases.stack")}</h2>
+        <ul class="chips">
+          {caso.stack.map((tech) => (
+            <li class="chip">{tech}</li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</article>
+
+<style>
+  .caso {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    /* padding-top libera el switch de idioma (fixed, arriba-derecha) */
+    padding: 80px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* Neutraliza el padding/centrado global de <section> dentro del caso */
+  .caso section {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  /* VOLVER */
+  .back {
+    align-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    font-family: var(--font2);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-indent: 2px;
+    text-transform: uppercase;
+    color: var(--clr-text);
+  }
+
+  .back .bi {
+    font-size: 0.9rem;
+    transition: transform var(--transition-md);
+  }
+
+  /* HEADER */
+  .caso-head {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .caso-head .cliente {
+    color: var(--clr-accent);
+    font-family: var(--font2);
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    text-indent: 3px;
+    text-transform: uppercase;
+  }
+
+  .caso-head h1 {
+    font-size: clamp(2.4rem, 11vw, 4rem);
+    line-height: 1.05;
+  }
+
+  .caso-head .tagline {
+    font-size: 1.1rem;
+    color: #ffffffcf;
+  }
+
+  .caso-head .visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  /* DESCRIPCIÓN DE LA EMPRESA (texto puro, sin card) */
+  .bloque {
+    margin-top: -10px;
+  }
+
+  .descripcion {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--clr-text);
+  }
+
+  .meta-label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font2);
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-indent: 2px;
+    text-transform: uppercase;
+    color: #ffffff70;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: solid 1px var(--clr-border);
+    background-color: #ffffff05;
+    font-size: 0.85rem;
+  }
+
+  /* SECCIÓN STACK (independiente, al final) */
+  .stack-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* TRABAJOS */
+  .trabajos {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    text-align: left;
+  }
+
+  .section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--clr-border);
+  }
+
+  .trabajos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .trabajo {
+    display: flex;
+    gap: 18px;
+    padding: 24px;
+  }
+
+  .num {
+    flex-shrink: 0;
+    font-family: var(--font2);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--clr-accent);
+    opacity: 0.9;
+  }
+
+  .trabajo-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .trabajo h3 {
+    font-size: 1.15rem;
+    padding-left: 0;
+    text-indent: 0;
+  }
+
+  .resultado {
+    color: var(--clr-text);
+  }
+
+  @media (hover: hover) {
+    .back:hover .bi {
+      transform: translateX(-4px);
+    }
+  }
+
+  /* DESKTOP */
+  @media (min-width: 750px) {
+    .caso {
+      padding-top: 90px;
+    }
+
+    .trabajos-grid.multi {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .trabajos-grid.multi .trabajo {
+      flex: 1 1 300px;
+    }
+  }
+</style>

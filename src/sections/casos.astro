@@ -1,0 +1,144 @@
+---
+// Contenido en src/i18n/ui.ts — editar `caseStudies` allí para agregar casos
+import {
+  useTranslations,
+  getCaseStudies,
+  localizedPath,
+  defaultLang,
+  type Lang,
+} from "../i18n/ui";
+
+const { lang = defaultLang } = Astro.props as { lang?: Lang };
+const t = useTranslations(lang);
+const casos = getCaseStudies(lang);
+---
+
+<section id="casos" class="casos">
+  <h2>{t("cases.title.a")}<span>{t("cases.title.b")}</span></h2>
+
+  <div class="grid">
+    {
+      casos.map((caso) => (
+        <a
+          href={localizedPath(`/casos/${caso.slug}`, lang)}
+          class="flex-column card-glass caso-card"
+        >
+          <h3>{caso.nombre}</h3>
+
+          {caso.trabajos.length > 0 && (
+            <ul class="trabajos-list">
+              {caso.trabajos.map((trabajo) => (
+                <li>{trabajo.titulo}</li>
+              ))}
+            </ul>
+          )}
+
+          <span class="caso-link">
+            {t("cases.view")}
+            <i class="bi bi-arrow-right" />
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  h2 {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .caso-card {
+    padding: 20px;
+    align-items: start;
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    color: inherit;
+  }
+
+  .caso-card h3 {
+    font-size: 1.3rem;
+    padding-left: 0;
+    text-indent: 0;
+  }
+
+  .trabajos-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 4px 0 10px;
+    text-align: left;
+  }
+
+  .trabajos-list li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.9rem;
+    color: var(--clr-text);
+  }
+
+  .trabajos-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--clr-accent);
+  }
+
+  .caso-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    font-family: var(--font2);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-indent: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    transition: var(--transition);
+  }
+
+  .caso-link .bi {
+    transition: transform var(--transition-md);
+  }
+
+  @media (hover: hover) {
+    .caso-card:hover .caso-link {
+      color: var(--clr-accent);
+    }
+
+    .caso-card:hover .caso-link .bi {
+      transform: translateX(4px);
+    }
+  }
+
+  /* DESKTOP - A partir de 750px */
+  @media (min-width: 750px) {
+    .grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .caso-card {
+      max-width: 350px;
+    }
+  }
+</style>
