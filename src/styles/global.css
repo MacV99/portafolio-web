@@ -1,7 +1,9 @@
 :root {
   /* PRIMARY COLORS */
   --clr-primary: #af1a5b;
-  --clr-accent: #af1a5b;
+  /* Acento para TEXTO: más claro que primary para que se lea bien sobre negro */
+  --clr-accent: #e0457f;
+  --clr-white: #ffffff;
   --clr-text: #ececec;
 
   --clr-border: #ffffff17;
@@ -42,14 +44,19 @@ body {
   align-items: center;
   flex-direction: column;
   color: #fff;
-  background-image: url('/img/wallpaper.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  background-color: #000000e7;
-  background-blend-mode: darken;
+  background-color: #000;
+}
 
-
+/* Fondo fijo en capa propia: más fluido que background-attachment: fixed */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(#000000e7, #000000e7),
+    url("/img/wallpaper.webp") center / cover;
+  pointer-events: none;
 }
 
 main {
@@ -75,6 +82,17 @@ i.bi {
   justify-content: center;
   color: #fff;
   transition: .22s ease;
+}
+
+i.bi svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* Foco visible al navegar con teclado */
+:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 3px;
 }
 
 h1,
@@ -172,10 +190,6 @@ span {
   .boton2:hover {
     background-color: #ffffff09;
     color: var(--clr-accent);
-  }
-
-  .boton2:hover {
-    background-color: var(--clr-dark2);
   }
 
   .card-glass:hover {

@@ -6,6 +6,7 @@ import {
   defaultLang,
   type Lang,
 } from "../i18n/ui";
+import { icons } from "../icons";
 
 const { lang = defaultLang } = Astro.props as { lang?: Lang };
 const t = useTranslations(lang);
@@ -25,10 +26,11 @@ const experience = experienceData[lang];
           <button
             class="toggle-btn"
             data-target={`highlights-${index}`}
+            aria-controls={`highlights-${index}`}
             aria-expanded="false"
           >
             <span class="btn-text">{t("experience.details")}</span>
-            <i class="bi bi-chevron-down icon" />
+            <i class="bi bi-chevron-down icon" set:html={icons.chevronDown} />
           </button>
 
           <ul class="highlights" id={`highlights-${index}`}>

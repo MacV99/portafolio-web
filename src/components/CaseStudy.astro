@@ -7,6 +7,7 @@ import {
   type Lang,
   type CaseStudy,
 } from "../i18n/ui";
+import { icons } from "../icons";
 
 interface Props {
   caso: CaseStudy;
@@ -19,7 +20,7 @@ const t = useTranslations(lang);
 
 <article class="caso">
   <a href={`${localizedPath("/", lang)}#casos`} class="back boton2">
-    <i class="bi bi-arrow-left"></i>{t("cases.back")}
+    <i class="bi bi-arrow-left" set:html={icons.arrowLeft} />{t("cases.back")}
   </a>
 
   <header class="caso-head">
@@ -35,7 +36,7 @@ const t = useTranslations(lang);
           rel="noopener noreferrer"
           class="boton visit"
         >
-          {t("cases.visit")}<i class="bi bi-box-arrow-up-right" />
+          {t("cases.visit")}<i class="bi bi-box-arrow-up-right" set:html={icons.boxArrowUpRight} />
         </a>
       )
     }

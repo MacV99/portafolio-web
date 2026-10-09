@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import profile from "../assets/macv.png";
+import { icons } from "../icons";
 import { useTranslations, defaultLang, type Lang } from "../i18n/ui";
 
 const { lang = defaultLang } = Astro.props as { lang?: Lang };
@@ -22,14 +23,26 @@ const t = useTranslations(lang);
           <a
             href="https://www.linkedin.com/in/miguel-angel-cuellar-velandia-259848240/"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
-            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-linkedin" set:html={icons.linkedin} />
           </a>
-          <a href="https://github.com/MacV99" target="_blank">
-            <i class="bi bi-github"></i>
+          <a
+            href="https://github.com/MacV99"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="bi bi-github" set:html={icons.github} />
           </a>
-          <a href="https://www.instagram.com/macv_9" target="_blank">
-            <i class="bi bi-instagram"></i>
+          <a
+            href="https://www.instagram.com/macv_9"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <i class="bi bi-instagram" set:html={icons.instagram} />
           </a>
         </div>
       </div>

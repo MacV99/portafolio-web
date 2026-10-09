@@ -4,13 +4,10 @@ import "@fontsource-variable/montserrat";
 import "@fontsource/orbitron/400.css";
 import "@fontsource/orbitron/500.css";
 import "@fontsource/orbitron/700.css";
-import "@fontsource/orbitron/900.css";
-
-// Iconos self-hosted (sin render-block del CDN de jsdelivr)
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 import "../styles/global.css";
 import Starfield from "../components/Starfield.astro";
+import { icons } from "../icons";
 import { defaultLang, localizedPath, type Lang } from "../i18n/ui";
 
 interface Props {
@@ -31,8 +28,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const ogImage = new URL(image, Astro.site ?? Astro.url);
 
 const site = Astro.site ?? Astro.url;
-const esPath = localizedPath("/", "es");
-const enPath = localizedPath("/", "en");
+// Ruta actual sin el prefijo de idioma, para que el switch ES/EN
+// lleve a la misma página en el otro idioma (la 404 no existe en /en/)
+const basePath = Astro.url.pathname.startsWith("/404")
+  ? "/"
+  : Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+const esPath = localizedPath(basePath, "es");
+const enPath = localizedPath(basePath, "en");
 const esHref = new URL(esPath, site).href;
 const enHref = new URL(enPath, site).href;
 ---
@@ -71,7 +73,7 @@ const enHref = new URL(enPath, site).href;
   <body>
     <Starfield />
     <nav class="lang-switch" aria-label={lang === "es" ? "Idioma" : "Language"}>
-      <i class="bi bi-translate lang-switch__icon"></i>
+      <i class="bi bi-translate lang-switch__icon" set:html={icons.translate} />
       <div class="lang-switch__track" data-active={lang}>
         <span class="lang-switch__thumb" aria-hidden="true"></span>
         <a
@@ -144,8 +146,8 @@ const enHref = new URL(enPath, site).href;
       left: 3px;
       width: calc(50% - 3px);
       border-radius: 100px;
-      background: var(--clr-accent);
-      box-shadow: 0 0 14px -2px var(--clr-accent);
+      background: var(--clr-primary);
+      box-shadow: 0 0 14px -2px var(--clr-primary);
       transition: transform 0.32s cubic-bezier(0.34, 1.4, 0.64, 1);
     }
 
